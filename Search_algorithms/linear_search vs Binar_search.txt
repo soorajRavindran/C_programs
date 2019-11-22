@@ -1,0 +1,6 @@
+Important Differences
+
+1. Input data needs to be sorted in Binary Search and not in Linear Search
+2. Linear search does the sequential access whereas Binary search access data randomly.
+3. Time complexity of linear search -O(n) , Binary search has time complexity O(log n).
+4. Linear search performs equality comparisons and Binary search performs ordering comparisons
