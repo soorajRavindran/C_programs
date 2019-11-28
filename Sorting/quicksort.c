@@ -10,14 +10,16 @@ Write your code in this editor and press "Run" button to compile and execute it.
 void quickSort(int arr[],int start,int end);
 int partition(int arr[], int start, int end);
 void swap(int* a, int* b);
+void printArray(int arr[], int size);
 
 int main()
 {
     int arr[]={8,7,2,3,5,6,1,5};
     int size = sizeof(arr)/sizeof(arr[0]);
-    printf("\n size of array : %d", size);
     
     quickSort(arr, 0, (size-1));
+    
+    printArray(arr,(size-1));
 
     return 0;
 }
@@ -26,32 +28,34 @@ void quickSort(int arr[],int start,int end)
 {
     int pIndex = 0;
     
-    /*if(start >= end)
-    {
-        return
-    }*/
-    
     if ( start < end)
     {
         pIndex = partition(arr, start, end);
-        quickSort(arr,start,pIndex);
+        quickSort(arr, start, pIndex-1);
         quickSort(arr, (pIndex+1), end);
     }
 }
 
+/* 
+   1. We will take thelast element as pivot.
+   2. We have to arrange isn a such a way that all the elements left to the pivot should be less than pivot.
+     All the right elements in the array right to the pivot should be greate than pivot.
+     
+   3 @ return : pivot index. 
+*/
 int partition(int arr[], int start, int end)
 {
     int pivot = arr[end];
-    int pIndex = 0;
-    for (int i=0; i < end; i++)
+    int pIndex = start;
+    for (int i=start; i < end; i++)
     {
-        if(arr[i]<=arr[pivot])
+        if(arr[i] <= pivot)
         {
             swap(&arr[i],&arr[pIndex]);
             pIndex++;
         }
     }
-    swap(&arr[pIndex],&arr[pivot]);
+    swap(&arr[pIndex],&pivot);
     return pIndex;
 }
 
@@ -61,4 +65,13 @@ void swap (int* a, int* b)
     temp=*b;
     *b=*a;
     *a=temp;
+}
+
+void printArray(int arr[], int size)
+{
+    int i;
+    for(i=0; i<=size; i++)
+    {
+        printf("%d \t",arr[i]);
+    }
 }
