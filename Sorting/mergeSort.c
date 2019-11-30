@@ -37,7 +37,7 @@ void mergeSort(int arr[],int l, int r)
 
 void merge(int arr[], int l,int mid, int r)                   
 {
-    int i,j,k=l;
+    int i,j,k;
     
     // 1. creating two temporary array .For ex. Consider an array of size 8. Mid will 3 (arr[3]).each side of array
     // will be having array size as 4. left array size = mid (3) - low (0) + 1 = 4.
@@ -61,7 +61,10 @@ void merge(int arr[], int l,int mid, int r)
         rightArray[j]=arr[mid+1+j];
     }
     
-    //3. Sort and merge
+    i=0;
+    j=0;
+    k=l;
+  //3. Sort and merge
     
     while(i<nL && j<rL)
     {
