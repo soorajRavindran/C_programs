@@ -10,49 +10,62 @@ Write your code in this editor and press "Run" button to compile and execute it.
 #include <stdlib.h>
 #define NUMBER_OF_NODES 5
 
-void printList();
-void createNode(int i);
-struct
+struct node
 {
     int data;
     struct node* link;
-}node;
+};
 
-struct node* start = NULL;
+struct node* head = NULL;
+
+void printList();
+struct node* createNodeAtEnd(int data);
 
 int main()
 {
     int i;
+
     for(i=0; i < NUMBER_OF_NODES; i++)
     {
-        createNode(i);
+      head=createNodeAtEnd(i);
     }
     
     printList();
-    printf("Hello World");
 
     return 0;
 }
 
-void printList()
-{
-    struct node* p =start;
-    while( p->link!=NULL )
-    {
-        printf("Values : %d", p->data);
-        p=p->link;
-    }
-}
-
-void createNode(int i)
+struct node* createNodeAtEnd(int data)
 {
     struct node* p;
-    struct node *temp = (struct node*)malloc(struct node*);
-    temp->data=i;
+    struct node* temp = (struct node*)malloc(sizeof(struct node));
+    temp->data=data;
     temp->link=NULL;
+    if(head==NULL)
+    {
+        head=temp;
+        return head;
+    }
+    p=head;
     while(p->link!=NULL)
     {
         p=p->link;
     }
     p->link=temp;
+    return head;
+}
+
+void printList()
+{
+    struct node* p = head;
+    if(p==NULL)
+    {
+        printf("List is empty \n");
+    }
+    printf("Value at each node :");
+    while(p!=NULL)
+    {
+        printf("%d \t", p->data);
+        p=p->link;
+    }
 }
