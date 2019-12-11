@@ -8,7 +8,6 @@ Write your code in this editor and press "Run" button to compile and execute it.
 
 #include <stdio.h>
 
-
 int main()
 {
     int arr[]={10,20,30};
@@ -26,4 +25,8 @@ int main()
     printf("%p, %p , %p , %d \n", ptr, p, *ptr, *p);
     
     printf("%lu, %lu \n", sizeof(*p), sizeof(*ptr));
+    ptr--;
+    
+    printf("%d \n", *(*ptr));//whenever a pointer to an array is dereferenced, we get the base address of the array to which it points
+                             // if we do dereference again, will get the 0th elemnt of the array.
 }
